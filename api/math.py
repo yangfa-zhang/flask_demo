@@ -2,20 +2,7 @@ from flask import Blueprint, request, jsonify
 
 math_bp = Blueprint("math", __name__, url_prefix="/api/math")
 
-'''
-methods=["POST"]
-可以在前端APP中：
-fetch("http://局域网ip地址:5000/api/math/square", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({ n: 6 })
-})
-.then(res => res.json())
-.then(console.log)
-'''
-# @math_bp.route("/square", methods=["GET"])
+# @math_bp.route("/square", methods=["GET","POST"])
 @math_bp.route("/square", methods=["POST"])
 def square():
     """
@@ -25,7 +12,7 @@ def square():
     if request.method == "GET":
         n = request.args.get("n")
 
-    # 2️⃣ POST: JSON {"n": 3}
+    # 2️⃣ POST: curl -X POST http://局域网ip/api/math/square -H "Content-Type: application/json" -d '{"n": 8}'
     else:
         data = request.get_json(silent=True) or {}
         n = data.get("n")

@@ -1,9 +1,3 @@
-'''
-cd flask_demo
-flask run --host=0.0.0.0 --port=5001
-python app.py
-visit url: http://局域网ip地址:5001/api/math/square?n=1234
-'''
 import gevent.monkey
 gevent.monkey.patch_all()
 
